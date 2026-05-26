@@ -35,7 +35,7 @@
 #  pixi/nodejs baseline bump across main + every distro submodule (blocked by the
 #  mutual main<->cachyos/nvidia import); this family rides the newest desktop stack
 #  and accepts the two newest-wins notices.
-version: 2026.143.844
+version: 2026.144.1443
 defaults:
     platform:
         - linux/amd64
@@ -47,116 +47,13 @@ defaults:
         auto: false
         max_mb: 128
 import:
-    - '@github.com/overthinkos/overthink/build.yml:v2026.141.1600'
-    - ov: '@github.com/overthinkos/overthink:v2026.143.844'
-    - cachyos: '@github.com/overthinkos/cachyos:v2026.143.844'
-    - nvidia: '@github.com/overthinkos/nvidia:v2026.143.1840'
-image:
-    selkies-desktop:
-        # CPU streaming desktop on the CachyOS (Arch) base — pixi build of selkies
-        # (pixelflux Rust) + AUR google-chrome/wlrctl + labwc/waybar/swaync/etc.
-        base: cachyos.cachyos
-        builder:
-            pixi: ov.arch-builder
-            npm: ov.arch-builder
-            cargo: ov.arch-builder
-            aur: ov.arch-builder
-        build:
-            - pac
-            - aur
-        platform:
-            - linux/amd64
-        layer:
-            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.141.1600'
-            - '@github.com/overthinkos/overthink/layers/selkies-desktop:v2026.144.0531'
-            - '@github.com/overthinkos/overthink/layers/dbus:v2026.144.0531'
-            - '@github.com/overthinkos/overthink/layers/ov:v2026.141.1600'
-        port:
-            - 3000:3000
-            - 9222:9222
-            - 9224:9224
-            - 2222:2222
-        eval:
-            - command: test -x /usr/bin/labwc && test -x /usr/bin/google-chrome-stable && test -x /usr/local/bin/traefik && test -x /usr/sbin/sshd
-              id: selkies-desktop-binaries
-              exit_status: 0
-            - addr: 127.0.0.1:${HOST_PORT:9224}
-              id: selkies-desktop-chrome-devtools-mcp-port
-              timeout: 5s
-              scope: deploy
-              reachable: true
-    selkies-desktop-nvidia:
-        # GPU variant on the Fedora nvidia base (NVENC H.264). Disabled/untested.
-        enabled: false
-        base: nvidia.nvidia
-        builder:
-            pixi: ov.fedora-builder
-            npm: ov.fedora-builder
-            cargo: ov.fedora-builder
-        platform:
-            - linux/amd64
-        layer:
-            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.141.1600'
-            - '@github.com/overthinkos/overthink/layers/selkies-desktop:v2026.144.0531'
-            - '@github.com/overthinkos/overthink/layers/dbus:v2026.144.0531'
-            - '@github.com/overthinkos/overthink/layers/ov:v2026.141.1600'
-        port:
-            - 3000:3000
-            - 9222:9222
-            - 9224:9224
-            - 2222:2222
-    sway-browser-vnc:
-        # Minimal Sway desktop + wayvnc (VNC) + Chrome (CDP) on the Fedora base.
-        base: ov.fedora
-        builder:
-            pixi: ov.fedora-builder
-            npm: ov.fedora-builder
-            cargo: ov.fedora-builder
-        platform:
-            - linux/amd64
-        layer:
-            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.141.1600'
-            - '@github.com/overthinkos/overthink/layers/sway-desktop-vnc:v2026.144.0531'
-            - '@github.com/overthinkos/overthink/layers/dbus:v2026.144.0531'
-            - '@github.com/overthinkos/overthink/layers/ov:v2026.141.1600'
-        port:
-            - 5900:5900
-            - 9222:9222
-            - 9224:9224
-        eval:
-            - command: test -x /usr/bin/sway && test -x /usr/bin/wayvnc && test -x /usr/bin/google-chrome-stable
-              id: sway-browser-vnc-binaries
-              exit_status: 0
-            - command: supervisorctl status sway wayvnc | awk '{print $2}' | sort -u
-              id: sway-browser-vnc-services
-              scope: deploy
-              in_container: true
-              exit_status: 0
-              stdout:
-                - RUNNING
-            - cdp: status
-              id: sway-browser-vnc-cdp-up
-              scope: deploy
-              stdout:
-                - contains: ok
-            - vnc: status
-              id: sway-browser-vnc-vnc-up
-              scope: deploy
-              stdout:
-                - contains: ok
-            - wl: toplevel
-              id: sway-browser-vnc-wl-has-windows
-              scope: deploy
-            - dbus: list
-              id: sway-browser-vnc-dbus-notifications-registered
-              scope: deploy
-              stdout:
-                - contains: org.freedesktop.Notifications
-            - vnc: screenshot
-              id: sway-browser-vnc-vnc-framebuffer
-              scope: deploy
-              artifact: /tmp/sway-browser-vnc-fb.png
-              artifact_min_bytes: 5000
+    - '@github.com/overthinkos/overthink/build.yml:v2026.146.0858'
+    - ov: '@github.com/overthinkos/overthink:v2026.146.0858'
+    - cachyos: '@github.com/overthinkos/cachyos:v2026.146.0754'
+    - nvidia: '@github.com/overthinkos/nvidia:v2026.146.0921'
+    - image.yml
+    - pod.yml
+    - k8s.yml
 eval:
     # eval-sway-browser-vnc-pod deploys the SHIPPING sway-browser-vnc image
     # (Sway desktop + Chrome + wayvnc). The image bakes binaries/services/
@@ -168,6 +65,14 @@ eval:
         image: sway-browser-vnc
         disposable: true
         lifecycle: dev
+        # Port remap into the 4xxxx range so the bed never collides with
+        # production pods on this host (ov-openclaw-sway-browser-pod publishes
+        # 5900/9222/9224 canonically). Distinct from eval-selkies-desktop-pod's
+        # 49222/49224 so future bed-bed parallelism is also safe.
+        port:
+            - 45900:5900
+            - 45922:9222
+            - 45924:9224
         eval:
             - http: "http://127.0.0.1:${HOST_PORT:9222}/json/version"
               id: esbv-pod-http-cdp
@@ -198,11 +103,15 @@ eval:
         image: selkies-desktop
         disposable: true
         lifecycle: dev
+        # Port remap into the 4xxxx range so the bed never collides with
+        # production pods on this host. Operator's ov-versa/-ecovoyage already
+        # publish on 33000/39222/39224/32222 (pre-existing canonical mapping);
+        # the bed using those same host ports failed to bind at start.
         port:
-            - 33000:3000
-            - 39222:9222
-            - 39224:9224
-            - 32222:2222
+            - 43000:3000
+            - 49222:9222
+            - 49224:9224
+            - 42224:2222
         description:
             feature: "R10 bed for the CPU selkies-desktop streaming desktop on the CachyOS (Arch) base — exercises the cachyos→arch-builder pixi build of selkies (pixelflux Rust compile) plus the AUR build of google-chrome + wlrctl and the labwc/waybar/swaync/pipewire/traefik/sshd layer stack."
             tag: [testing]
