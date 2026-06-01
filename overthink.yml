@@ -47,8 +47,8 @@ defaults:
         auto: false
         max_mb: 128
 import:
-    - '@github.com/overthinkos/overthink/build.yml:v2026.146.0858'
-    - ov: '@github.com/overthinkos/overthink:v2026.146.0858'
+    - '@github.com/overthinkos/overthink/build.yml:v2026.152.0739'
+    - ov: '@github.com/overthinkos/overthink:v2026.152.0739'
     - cachyos: '@github.com/overthinkos/cachyos:v2026.146.0754'
     - nvidia: '@github.com/overthinkos/nvidia:v2026.146.0921'
     - image.yml
@@ -121,4 +121,7 @@ eval:
             - {id: esd-pod-wtype, scope: deploy, file: /usr/bin/wtype, exists: true}
             - {id: esd-pod-labwc, scope: deploy, file: /usr/bin/labwc, exists: true}
             - {id: esd-pod-swaync, scope: deploy, file: /usr/bin/swaync, exists: true}
-            - {id: esd-pod-pipewire, scope: deploy, file: /usr/bin/pipewire, exists: true}
+            - {id: esd-pod-pipewire, scope: deploy, file: /usr/bin/pipewire, exists: true,}
+            # labwc liveness is asserted generically by the labwc layer's
+            # labwc-stable eval (supervisord uptime >=20s) — baked into every
+            # labwc image, so the bed inherits it (no bed-specific duplicate, R3).

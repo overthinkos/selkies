@@ -19,10 +19,10 @@ image:
         platform:
             - linux/amd64
         layer:
-            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.146.0858'
-            - '@github.com/overthinkos/overthink/layers/selkies-desktop:v2026.146.0858'
-            - '@github.com/overthinkos/overthink/layers/dbus:v2026.146.0858'
-            - '@github.com/overthinkos/overthink/layers/ov:v2026.146.0858'
+            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.152.0739'
+            - '@github.com/overthinkos/overthink/layers/selkies-desktop:v2026.152.0739'
+            - '@github.com/overthinkos/overthink/layers/dbus:v2026.152.0739'
+            - '@github.com/overthinkos/overthink/layers/ov:v2026.152.0739'
         port:
             - 3000:3000
             - 9222:9222
@@ -48,10 +48,10 @@ image:
         platform:
             - linux/amd64
         layer:
-            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.146.0858'
-            - '@github.com/overthinkos/overthink/layers/selkies-desktop:v2026.146.0858'
-            - '@github.com/overthinkos/overthink/layers/dbus:v2026.146.0858'
-            - '@github.com/overthinkos/overthink/layers/ov:v2026.146.0858'
+            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.152.0739'
+            - '@github.com/overthinkos/overthink/layers/selkies-desktop:v2026.152.0739'
+            - '@github.com/overthinkos/overthink/layers/dbus:v2026.152.0739'
+            - '@github.com/overthinkos/overthink/layers/ov:v2026.152.0739'
         port:
             - 3000:3000
             - 9222:9222
@@ -67,10 +67,10 @@ image:
         platform:
             - linux/amd64
         layer:
-            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.146.0858'
-            - '@github.com/overthinkos/overthink/layers/sway-desktop-vnc:v2026.146.0858'
-            - '@github.com/overthinkos/overthink/layers/dbus:v2026.146.0858'
-            - '@github.com/overthinkos/overthink/layers/ov:v2026.146.0858'
+            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.152.0739'
+            - '@github.com/overthinkos/overthink/layers/sway-desktop-vnc:v2026.152.0739'
+            - '@github.com/overthinkos/overthink/layers/dbus:v2026.152.0739'
+            - '@github.com/overthinkos/overthink/layers/ov:v2026.152.0739'
         port:
             - 5900:5900
             - 9222:9222
