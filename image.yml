@@ -4,7 +4,7 @@
 #  2026-05 kind-files cutover.
 version: 2026.144.1443
 image:
-    selkies-desktop:
+    selkies-labwc:
         # CPU streaming desktop on the CachyOS (Arch) base — pixi build of selkies
         # (pixelflux Rust) + AUR google-chrome/wlrctl + labwc/waybar/swaync/etc.
         base: cachyos.cachyos
@@ -19,10 +19,10 @@ image:
         platform:
             - linux/amd64
         layer:
-            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.152.0739'
-            - '@github.com/overthinkos/overthink/layers/selkies-desktop:v2026.152.0739'
-            - '@github.com/overthinkos/overthink/layers/dbus:v2026.152.0739'
-            - '@github.com/overthinkos/overthink/layers/ov:v2026.152.0739'
+            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.153.0743'
+            - '@github.com/overthinkos/overthink/layers/selkies-desktop:v2026.153.0743'
+            - '@github.com/overthinkos/overthink/layers/dbus:v2026.153.0743'
+            - '@github.com/overthinkos/overthink/layers/ov:v2026.153.0743'
         port:
             - 3000:3000
             - 9222:9222
@@ -30,33 +30,13 @@ image:
             - 2222:2222
         eval:
             - command: test -x /usr/bin/labwc && test -x /usr/bin/google-chrome-stable && test -x /usr/local/bin/traefik && test -x /usr/sbin/sshd
-              id: selkies-desktop-binaries
+              id: selkies-labwc-binaries
               exit_status: 0
             - addr: 127.0.0.1:${HOST_PORT:9224}
-              id: selkies-desktop-chrome-devtools-mcp-port
+              id: selkies-labwc-chrome-devtools-mcp-port
               timeout: 5s
               scope: deploy
               reachable: true
-    selkies-desktop-nvidia:
-        # GPU variant on the Fedora nvidia base (NVENC H.264). Disabled/untested.
-        enabled: false
-        base: nvidia.nvidia
-        builder:
-            pixi: ov.fedora-builder
-            npm: ov.fedora-builder
-            cargo: ov.fedora-builder
-        platform:
-            - linux/amd64
-        layer:
-            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.152.0739'
-            - '@github.com/overthinkos/overthink/layers/selkies-desktop:v2026.152.0739'
-            - '@github.com/overthinkos/overthink/layers/dbus:v2026.152.0739'
-            - '@github.com/overthinkos/overthink/layers/ov:v2026.152.0739'
-        port:
-            - 3000:3000
-            - 9222:9222
-            - 9224:9224
-            - 2222:2222
     sway-browser-vnc:
         # Minimal Sway desktop + wayvnc (VNC) + Chrome (CDP) on the Fedora base.
         base: ov.fedora
@@ -67,10 +47,10 @@ image:
         platform:
             - linux/amd64
         layer:
-            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.152.0739'
-            - '@github.com/overthinkos/overthink/layers/sway-desktop-vnc:v2026.152.0739'
-            - '@github.com/overthinkos/overthink/layers/dbus:v2026.152.0739'
-            - '@github.com/overthinkos/overthink/layers/ov:v2026.152.0739'
+            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.153.0743'
+            - '@github.com/overthinkos/overthink/layers/sway-desktop-vnc:v2026.153.0743'
+            - '@github.com/overthinkos/overthink/layers/dbus:v2026.153.0743'
+            - '@github.com/overthinkos/overthink/layers/ov:v2026.153.0743'
         port:
             - 5900:5900
             - 9222:9222

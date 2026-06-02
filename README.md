@@ -8,8 +8,8 @@ repository and mounted as a git submodule at `image/selkies` of the main repo.
 
 | Kind | Entries |
 |---|---|
-| `image:` | `selkies-desktop` (CPU streaming desktop, CachyOS base), `selkies-desktop-nvidia` (GPU/NVENC variant, Fedora nvidia base, disabled), `sway-browser-vnc` (minimal Sway + wayvnc + Chrome, Fedora base) |
-| `eval:` | `eval-sway-browser-vnc-pod`, `eval-selkies-desktop-pod` (disposable R10 beds) |
+| `image:` | `selkies-labwc` (CPU streaming desktop, CachyOS base), `sway-browser-vnc` (minimal Sway + wayvnc + Chrome, Fedora base) |
+| `eval:` | `eval-sway-browser-vnc-pod`, `eval-selkies-labwc-pod` (disposable R10 beds) |
 
 The desktop **layers** (`selkies-desktop`, `sway-desktop-vnc`, and their subtrees:
 chrome, labwc, sway, wayvnc, pixelflux/selkies, waybar, swaync, pipewire, …) are
@@ -29,24 +29,22 @@ they remain in `main/layers/` and are reached here by `@github` reference.
   while the shared arch/fedora builders pin them at the ecosystem `v2026.141.1600`
   → 2 accepted newest-wins resolver notices (the resolver uses the newest);
 - bases arrive via namespaced imports: `ov.fedora` / `ov.fedora-builder` /
-  `ov.arch-builder` (main, `v2026.143.844`), `cachyos.cachyos` (`v2026.143.844`),
-  `nvidia.nvidia` (`v2026.143.1840`). Builder maps are declared per-image (they do
-  not cross a namespace boundary).
+  `ov.arch-builder` (main, `v2026.143.844`), `cachyos.cachyos` (`v2026.143.844`).
+  Builder maps are declared per-image (they do not cross a namespace boundary).
 
 ## Build
 
 ```bash
-ov --repo overthinkos/selkies image build selkies-desktop      # anywhere
+ov --repo overthinkos/selkies image build selkies-labwc        # anywhere
 ov -C image/selkies image build sway-browser-vnc               # from the parent
 ov -C image/selkies eval run eval-sway-browser-vnc-pod         # R10 bed
 ```
 
 ## Verification
 
-- `eval-sway-browser-vnc-pod` / `eval-selkies-desktop-pod` are the disposable R10
+- `eval-sway-browser-vnc-pod` / `eval-selkies-labwc-pod` are the disposable R10
   beds (build → deploy → eval live → fresh update → teardown).
-- The CPU desktops (`selkies-desktop`, `sway-browser-vnc`) run full deploy-scope
-  R10; `selkies-desktop-nvidia` (GPU/NVENC) needs GPU hardware.
+- The CPU desktops (`selkies-labwc`, `sway-browser-vnc`) run full deploy-scope R10.
 
 ---
 
