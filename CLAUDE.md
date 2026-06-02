@@ -1,7 +1,7 @@
 # image/selkies — signpost (not the rule-set)
 
 This submodule is the **Selkies streaming-desktop** image family (Wayland in a
-container, browser-accessible): a single `overthink.yml` that imports the main
+container, browser-accessible): an `overthink.yml` (plus per-kind sibling files) that imports the main
 repo under the `ov` namespace and `build.yml` flat.
 
 **Load these skills FIRST (R0):**
