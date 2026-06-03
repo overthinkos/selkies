@@ -19,10 +19,10 @@ image:
         platform:
             - linux/amd64
         layer:
-            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.153.0743'
-            - '@github.com/overthinkos/overthink/layers/selkies-desktop:v2026.153.0743'
-            - '@github.com/overthinkos/overthink/layers/dbus:v2026.153.0743'
-            - '@github.com/overthinkos/overthink/layers/ov:v2026.153.0743'
+            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.154.0740'
+            - '@github.com/overthinkos/overthink/layers/selkies-desktop:v2026.154.0740'
+            - '@github.com/overthinkos/overthink/layers/dbus:v2026.154.0740'
+            - '@github.com/overthinkos/overthink/layers/ov:v2026.154.0740'
         port:
             - 3000:3000
             - 9222:9222
@@ -47,10 +47,10 @@ image:
         platform:
             - linux/amd64
         layer:
-            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.153.0743'
-            - '@github.com/overthinkos/overthink/layers/sway-desktop-vnc:v2026.153.0743'
-            - '@github.com/overthinkos/overthink/layers/dbus:v2026.153.0743'
-            - '@github.com/overthinkos/overthink/layers/ov:v2026.153.0743'
+            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.154.0740'
+            - '@github.com/overthinkos/overthink/layers/sway-desktop-vnc:v2026.154.0740'
+            - '@github.com/overthinkos/overthink/layers/dbus:v2026.154.0740'
+            - '@github.com/overthinkos/overthink/layers/ov:v2026.154.0740'
         port:
             - 5900:5900
             - 9222:9222

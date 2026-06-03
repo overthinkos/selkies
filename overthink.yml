@@ -30,8 +30,8 @@ defaults:
         auto: false
         max_mb: 128
 import:
-    - '@github.com/overthinkos/overthink/build.yml:v2026.153.0743'
-    - ov: '@github.com/overthinkos/overthink:v2026.153.0743'
+    - '@github.com/overthinkos/overthink/build.yml:v2026.154.0740'
+    - ov: '@github.com/overthinkos/overthink:v2026.154.0740'
     - cachyos: '@github.com/overthinkos/cachyos:v2026.152.1946'
     - image.yml
     - pod.yml
@@ -92,3 +92,10 @@ eval:
             # labwc liveness is asserted generically by the labwc layer's
             # labwc-stable eval (supervisord uptime >=20s) — baked into every
             # labwc image, so the bed inherits it (no bed-specific duplicate, R3).
+            # CPU-RENDER PROOF (the "rendering without any GPU works" gate): this
+            # bed is GPU-less (selkies-labwc composes no nvidia/rocm layer → no
+            # /dev/dri), and the selkies layer's baked selkies-frame-not-black
+            # (real non-uniform pixels reach the stream) + selkies-encoder-active
+            # (no GPU render node → the CPU x264 path is legitimate) run here
+            # automatically — no per-bed duplicate (R3). This is the pure-CPU leg
+            # of the AMD-VAAPI / NVIDIA-NVENC / CPU-x264 encode matrix.
