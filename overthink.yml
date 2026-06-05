@@ -18,7 +18,7 @@
 #  PINS — every main ref (the desktop layers, build.yml, and the `ov` namespace)
 #  pins v2026.153.0743; the `cachyos` namespace pins v2026.152.1946. All aligned
 #  via `ov image reconcile`, so the resolver emits zero version warnings.
-version: 2026.156.557
+version: 2026.156.1531
 defaults:
     platform:
         - linux/amd64
