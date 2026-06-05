@@ -2,8 +2,8 @@
 #  overthink.yml's `includes:` list. The schema kind discriminator is
 #  `kind: image` for kind-keyed entries; root-shape map is `image:` (this file).
 #  2026-05 kind-files cutover.
-version: 2026.155.1801
-image:
+version: 2026.156.557
+box:
     selkies-labwc:
         # CPU streaming desktop on the CachyOS (Arch) base — pixi build of selkies
         # (pixelflux Rust) + AUR google-chrome/wlrctl + labwc/waybar/swaync/etc.
@@ -18,11 +18,11 @@ image:
             - aur
         platform:
             - linux/amd64
-        layer:
-            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.154.0740'
-            - '@github.com/overthinkos/overthink/layers/selkies-desktop:v2026.154.0740'
-            - '@github.com/overthinkos/overthink/layers/dbus:v2026.154.0740'
-            - '@github.com/overthinkos/overthink/layers/ov:v2026.154.0740'
+        candy:
+            - '@github.com/overthinkos/overthink/candy/agent-forwarding:v2026.154.0740'
+            - '@github.com/overthinkos/overthink/candy/selkies-desktop:v2026.154.0740'
+            - '@github.com/overthinkos/overthink/candy/dbus:v2026.154.0740'
+            - '@github.com/overthinkos/overthink/candy/ov:v2026.154.0740'
         port:
             - 3000:3000
             - 9222:9222
@@ -46,11 +46,11 @@ image:
             cargo: ov.fedora-builder
         platform:
             - linux/amd64
-        layer:
-            - '@github.com/overthinkos/overthink/layers/agent-forwarding:v2026.154.0740'
-            - '@github.com/overthinkos/overthink/layers/sway-desktop-vnc:v2026.154.0740'
-            - '@github.com/overthinkos/overthink/layers/dbus:v2026.154.0740'
-            - '@github.com/overthinkos/overthink/layers/ov:v2026.154.0740'
+        candy:
+            - '@github.com/overthinkos/overthink/candy/agent-forwarding:v2026.154.0740'
+            - '@github.com/overthinkos/overthink/candy/sway-desktop-vnc:v2026.154.0740'
+            - '@github.com/overthinkos/overthink/candy/dbus:v2026.154.0740'
+            - '@github.com/overthinkos/overthink/candy/ov:v2026.154.0740'
         port:
             - 5900:5900
             - 9222:9222

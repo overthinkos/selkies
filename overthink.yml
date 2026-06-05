@@ -18,7 +18,7 @@
 #  PINS — every main ref (the desktop layers, build.yml, and the `ov` namespace)
 #  pins v2026.153.0743; the `cachyos` namespace pins v2026.152.1946. All aligned
 #  via `ov image reconcile`, so the resolver emits zero version warnings.
-version: 2026.155.1801
+version: 2026.156.557
 defaults:
     platform:
         - linux/amd64
@@ -33,7 +33,7 @@ import:
     - '@github.com/overthinkos/overthink/build.yml:v2026.154.0740'
     - ov: '@github.com/overthinkos/overthink:v2026.154.0740'
     - cachyos: '@github.com/overthinkos/cachyos:v2026.152.1946'
-    - image.yml
+    - box.yml
     - pod.yml
     - k8s.yml
 eval:
@@ -44,7 +44,7 @@ eval:
     # sway-tree, record). Publishes the image's canonical 5900/9222/9224.
     eval-sway-browser-vnc-pod:
         target: pod
-        image: sway-browser-vnc
+        box: sway-browser-vnc
         disposable: true
         lifecycle: dev
         port: [auto] # auto-allocate free host ports (avoid fixed-port collisions)
@@ -75,7 +75,7 @@ eval:
     # rest of the deploy surface.
     eval-selkies-labwc-pod:
         target: pod
-        image: selkies-labwc
+        box: selkies-labwc
         disposable: true
         lifecycle: dev
         port: [auto] # auto-allocate free host ports (avoid fixed-port collisions)
