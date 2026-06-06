@@ -15,7 +15,7 @@ The desktop **layers** (`selkies-desktop`, `sway-desktop-vnc`, and their subtree
 chrome, labwc, sway, wayvnc, pixelflux/selkies, waybar, swaync, pipewire, …) are
 **not** here — they stay in the main repo. `selkies-desktop` is shared with
 `openclaw-desktop` and its subtree is shared widely, so by the shared-layer rule
-they remain in `main/layers/` and are reached here by `@github` reference.
+they remain in `main/candy/` and are reached here by `@github` reference.
 
 ## Composition by reference — nothing is vendored
 
