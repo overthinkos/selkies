@@ -1,27 +1,27 @@
-#  Per-kind file for image entries. Sibling of overthink.yml — included via
-#  overthink.yml's `includes:` list. The schema kind discriminator is
+#  Per-kind file for image entries. Sibling of charly.yml — imported via
+#  charly.yml's `import:` list. The schema kind discriminator is
 #  `kind: image` for kind-keyed entries; root-shape map is `image:` (this file).
 #  2026-05 kind-files cutover.
-version: 2026.156.1531
+version: 2026.159.3
 box:
     selkies-labwc:
         # CPU streaming desktop on the CachyOS (Arch) base — pixi build of selkies
         # (pixelflux Rust) + AUR google-chrome/wlrctl + labwc/waybar/swaync/etc.
         base: cachyos.cachyos
         builder:
-            pixi: ov.arch-builder
-            npm: ov.arch-builder
-            cargo: ov.arch-builder
-            aur: ov.arch-builder
+            pixi: charly.arch-builder
+            npm: charly.arch-builder
+            cargo: charly.arch-builder
+            aur: charly.arch-builder
         build:
             - pac
             - aur
         platform:
             - linux/amd64
         candy:
-            - '@github.com/overthinkos/overthink/candy/agent-forwarding:v2026.154.0740'
-            - '@github.com/overthinkos/overthink/candy/selkies-desktop:v2026.154.0740'
-            - '@github.com/overthinkos/overthink/candy/dbus:v2026.154.0740'
+            - '@github.com/overthinkos/overthink/candy/agent-forwarding:v2026.159.1458'
+            - '@github.com/overthinkos/overthink/candy/selkies-desktop:v2026.159.1458'
+            - '@github.com/overthinkos/overthink/candy/dbus:v2026.159.1458'
         port:
             - 3000:3000
             - 9222:9222
@@ -38,17 +38,17 @@ box:
               reachable: true
     sway-browser-vnc:
         # Minimal Sway desktop + wayvnc (VNC) + Chrome (CDP) on the Fedora base.
-        base: ov.fedora
+        base: charly.fedora
         builder:
-            pixi: ov.fedora-builder
-            npm: ov.fedora-builder
-            cargo: ov.fedora-builder
+            pixi: charly.fedora-builder
+            npm: charly.fedora-builder
+            cargo: charly.fedora-builder
         platform:
             - linux/amd64
         candy:
-            - '@github.com/overthinkos/overthink/candy/agent-forwarding:v2026.154.0740'
-            - '@github.com/overthinkos/overthink/candy/sway-desktop-vnc:v2026.154.0740'
-            - '@github.com/overthinkos/overthink/candy/dbus:v2026.154.0740'
+            - '@github.com/overthinkos/overthink/candy/agent-forwarding:v2026.159.1458'
+            - '@github.com/overthinkos/overthink/candy/sway-desktop-vnc:v2026.159.1458'
+            - '@github.com/overthinkos/overthink/candy/dbus:v2026.159.1458'
         port:
             - 5900:5900
             - 9222:9222

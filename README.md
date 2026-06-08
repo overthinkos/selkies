@@ -1,7 +1,7 @@
 # overthinkos/selkies
 
 The **Selkies / Sway streaming-desktop image family** for
-[Overthink](https://github.com/overthinkos/overthink), split into its own
+[OpenCharly](https://github.com/overthinkos/overthink), split into its own
 repository and mounted as a git submodule at `image/selkies` of the main repo.
 
 ## What's here
@@ -19,7 +19,7 @@ they remain in `main/candy/` and are reached here by `@github` reference.
 
 ## Composition by reference — nothing is vendored
 
-- `agent-forwarding` + `ov` + `build.yml` pin the ecosystem tag `v2026.141.1600`;
+- `agent-forwarding` + `charly` + `build.yml` pin the ecosystem tag `v2026.141.1600`;
 - the selkies desktop metalayers (`selkies-desktop`, `sway-desktop-vnc`) AND `dbus`
   pin `v2026.144.0531` — the metalayers carry the chrome CDP/MCP + pixelflux fixes
   that landed after the older ecosystem tag, and they transitively require `dbus` at
@@ -28,16 +28,16 @@ they remain in `main/candy/` and are reached here by `@github` reference.
 - `pixi`/`nodejs` are pulled transitively by the metalayers at `v2026.144.0531`
   while the shared arch/fedora builders pin them at the ecosystem `v2026.141.1600`
   → 2 accepted newest-wins resolver notices (the resolver uses the newest);
-- bases arrive via namespaced imports: `ov.fedora` / `ov.fedora-builder` /
-  `ov.arch-builder` (main, `v2026.143.844`), `cachyos.cachyos` (`v2026.143.844`).
+- bases arrive via namespaced imports: `charly.fedora` / `charly.fedora-builder` /
+  `charly.arch-builder` (main, `v2026.143.844`), `cachyos.cachyos` (`v2026.143.844`).
   Builder maps are declared per-image (they do not cross a namespace boundary).
 
 ## Build
 
 ```bash
-ov --repo overthinkos/selkies image build selkies-labwc        # anywhere
-ov -C image/selkies image build sway-browser-vnc               # from the parent
-ov -C image/selkies eval run eval-sway-browser-vnc-pod         # R10 bed
+charly --repo overthinkos/selkies image build selkies-labwc        # anywhere
+charly -C image/selkies image build sway-browser-vnc               # from the parent
+charly -C image/selkies eval run eval-sway-browser-vnc-pod         # R10 bed
 ```
 
 ## Verification
