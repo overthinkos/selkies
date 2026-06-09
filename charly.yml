@@ -18,7 +18,7 @@
 #  PINS — every main ref (the desktop layers, build.yml, and the `charly` namespace)
 #  pins v2026.159.1458; the `cachyos` namespace pins v2026.159.1455. All aligned
 #  via `charly box reconcile`, so the resolver emits zero version warnings.
-version: 2026.159.1912
+version: 2026.160.1301
 defaults:
     platform:
         - linux/amd64
@@ -30,12 +30,8 @@ defaults:
         auto: false
         max_mb: 128
 import:
-    - '@github.com/overthinkos/overthink/build.yml:v2026.160.0856'
     - charly: '@github.com/overthinkos/overthink:v2026.160.0856'
     - cachyos: '@github.com/overthinkos/cachyos:v2026.160.0856'
-    - box.yml
-    - pod.yml
-    - k8s.yml
 eval:
     # eval-sway-browser-vnc-pod deploys the SHIPPING sway-browser-vnc image
     # (Sway desktop + Chrome + wayvnc). The image bakes binaries/services/
@@ -99,3 +95,10 @@ eval:
             # (no GPU render node → the CPU x264 path is legitimate) run here
             # automatically — no per-bed duplicate (R3). This is the pure-CPU leg
             # of the AMD-VAAPI / NVIDIA-NVENC / CPU-x264 encode matrix.
+pod: {}
+k8s: {}
+discover:
+    - path: box
+      recursive: true
+    - path: candy
+      recursive: true
