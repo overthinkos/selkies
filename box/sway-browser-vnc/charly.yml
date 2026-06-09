@@ -9,9 +9,9 @@ box:
     platform:
         - linux/amd64
     candy:
-        - '@github.com/overthinkos/overthink/candy/agent-forwarding:v2026.160.0856'
-        - '@github.com/overthinkos/overthink/candy/sway-desktop-vnc:v2026.160.0856'
-        - '@github.com/overthinkos/overthink/candy/dbus:v2026.160.0856'
+        - '@github.com/overthinkos/overthink/candy/agent-forwarding:v2026.160.2017'
+        - '@github.com/overthinkos/overthink/candy/sway-desktop-vnc:v2026.160.2017'
+        - '@github.com/overthinkos/overthink/candy/dbus:v2026.160.2017'
     port:
         - 5900:5900
         - 9222:9222

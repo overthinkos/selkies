@@ -30,8 +30,8 @@ defaults:
         auto: false
         max_mb: 128
 import:
-    - charly: '@github.com/overthinkos/overthink:v2026.160.0856'
-    - cachyos: '@github.com/overthinkos/cachyos:v2026.160.0856'
+    - charly: '@github.com/overthinkos/overthink:v2026.160.2017'
+    - cachyos: '@github.com/overthinkos/cachyos:v2026.160.2017'
 eval:
     # eval-sway-browser-vnc-pod deploys the SHIPPING sway-browser-vnc image
     # (Sway desktop + Chrome + wayvnc). The image bakes binaries/services/
