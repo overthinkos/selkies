@@ -2,7 +2,7 @@
 #  charly.yml's `import:` list. The schema kind discriminator is
 #  `kind: image` for kind-keyed entries; root-shape map is `image:` (this file).
 #  2026-05 kind-files cutover.
-version: 2026.159.3
+version: 2026.159.1912
 box:
     selkies-labwc:
         # CPU streaming desktop on the CachyOS (Arch) base — pixi build of selkies
@@ -19,9 +19,9 @@ box:
         platform:
             - linux/amd64
         candy:
-            - '@github.com/overthinkos/overthink/candy/agent-forwarding:v2026.159.1458'
-            - '@github.com/overthinkos/overthink/candy/selkies-desktop:v2026.159.1458'
-            - '@github.com/overthinkos/overthink/candy/dbus:v2026.159.1458'
+            - '@github.com/overthinkos/overthink/candy/agent-forwarding:v2026.160.0856'
+            - '@github.com/overthinkos/overthink/candy/selkies-desktop:v2026.160.0856'
+            - '@github.com/overthinkos/overthink/candy/dbus:v2026.160.0856'
         port:
             - 3000:3000
             - 9222:9222
@@ -46,9 +46,9 @@ box:
         platform:
             - linux/amd64
         candy:
-            - '@github.com/overthinkos/overthink/candy/agent-forwarding:v2026.159.1458'
-            - '@github.com/overthinkos/overthink/candy/sway-desktop-vnc:v2026.159.1458'
-            - '@github.com/overthinkos/overthink/candy/dbus:v2026.159.1458'
+            - '@github.com/overthinkos/overthink/candy/agent-forwarding:v2026.160.0856'
+            - '@github.com/overthinkos/overthink/candy/sway-desktop-vnc:v2026.160.0856'
+            - '@github.com/overthinkos/overthink/candy/dbus:v2026.160.0856'
         port:
             - 5900:5900
             - 9222:9222

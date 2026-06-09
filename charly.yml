@@ -18,7 +18,7 @@
 #  PINS — every main ref (the desktop layers, build.yml, and the `charly` namespace)
 #  pins v2026.159.1458; the `cachyos` namespace pins v2026.159.1455. All aligned
 #  via `charly box reconcile`, so the resolver emits zero version warnings.
-version: 2026.159.3
+version: 2026.159.1912
 defaults:
     platform:
         - linux/amd64
@@ -30,9 +30,9 @@ defaults:
         auto: false
         max_mb: 128
 import:
-    - '@github.com/overthinkos/overthink/build.yml:v2026.159.1458'
-    - charly: '@github.com/overthinkos/overthink:v2026.159.1458'
-    - cachyos: '@github.com/overthinkos/cachyos:v2026.159.1455'
+    - '@github.com/overthinkos/overthink/build.yml:v2026.160.0856'
+    - charly: '@github.com/overthinkos/overthink:v2026.160.0856'
+    - cachyos: '@github.com/overthinkos/cachyos:v2026.160.0856'
     - box.yml
     - pod.yml
     - k8s.yml
